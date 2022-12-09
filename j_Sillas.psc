@@ -1,58 +1,55 @@
 Algoritmo j_Sillas
-	s<-0;
-	p<-0;
-	turnos<-0;
-	Definir listaJugadores Como Caracter;
-	Escribir "Bienvenido al juego de las Sillas";
-	
-	Mientras p<=1 Hacer
-		Escribir "Ingrese el numero de participantes"
-		Leer p;
-		Si p<=1 Entonces
-			Escribir "Debe haber mas de un jugador"
+	sillas <- 0
+	participantes <- 0
+	turnos <- 0
+	Definir listaJugadores Como Caracter
+	Escribir 'Bienvenido al juego de las Sillas'
+	Mientras participantes<=1 Hacer
+		Escribir 'Ingrese el numero de participantes'
+		Leer participantes
+		Si participantes<=1 Entonces
+			Escribir 'Debe haber mas de un jugador'
 		SiNo
-			s<-p-1;
-			Escribir "El juego comienza con ", p, " participantes"
-			Escribir "Sillas en juego: ",s
-		Fin Si
+			sillas <- participantes-1
+			Escribir 'El juego comienza con ',participantes,' participantes'
+			Escribir 'Sillas en juego: ',sillas
+		FinSi
 	FinMientras
-	Dimension listaJugadores[p];
-	
-	Para x<-1 Hasta p Con Paso 1 Hacer
-		Escribir "Ingrese nombre del Jugador: "
-		Leer nombre;
-		listaJugadores[x]<-nombre;
-	Fin Para
-	
-	Escribir "Empieza la ronda con los siguientes jugadores: "
-	Para i<-1 Hasta p Con Paso 1 Hacer
+	Dimension listaJugadores[participantes]
+	Para x<-1 Hasta participantes Hacer
+		Escribir 'Ingrese nombre del Jugador: '
+		Leer nombre
+		listaJugadores[x] <- nombre
+	FinPara
+	Escribir 'Empieza la ronda con los siguientes jugadores: '
+	Para i<-1 Hasta p Hacer
 		Escribir listaJugadores[i]
 	FinPara
-	m<-p-1;
-	Si s>0 Entonces
-		Para x<-1 Hasta m Con Paso 1 Hacer
-			turnos<-turnos+1;
-			Escribir "Presiona cualquier tecla para continuar..."
+	m <- participantes-1
+	Si sillas>0 Entonces
+		Para x<-1 Hasta m Hacer
+			turnos <- turnos+1
+			Escribir 'Presiona cualquier tecla para continuar...'
 			Esperar Tecla
-			Escribir "Empieza el turno ", turnos
-			Escribir "Suena la Musica..."
+			Escribir 'Empieza el turno ',turnos
+			Escribir 'Suena la Musica...'
 			Esperar 3 Segundos
-			Escribir "Se detiene la musica..."
-			aleat<-azar(p)
-			rand<-listaJugadores[aleat]
+			Escribir 'Se detiene la musica...'
+			aleat <- azar(participantes)
+			rand <- listaJugadores[aleat]
 			Esperar 2 Segundos
-			Escribir rand, " Se ha quedado sin silla, es descalificado"
-			s<-s-1;
-			Escribir "Se quita una Silla..."
-			Para iterador <- 1 Hasta p Con Paso 1 Hacer
-				Si listaJugadores[iterador] == rand Entonces
-					listaJugadores[iterador]<-''
+			Escribir rand,' Se ha quedado sin silla, es descalificado'
+			sillas <- sillas-1
+			Escribir 'Se quita una Silla...'
+			Para iterador<-1 Hasta participantes Hacer
+				Si listaJugadores[iterador]==rand Entonces
+					listaJugadores[iterador] <- ''
 				FinSi
 			FinPara
-		Fin Para
-	Fin Si
-	Si s==0 Entonces
-		Escribir "Juego Terminado"
-		Escribir "El Ganador es: ", listaJugadores[0] 
+		FinPara
+	FinSi
+	Si sillas==0 Entonces
+		Escribir 'Juego Terminado'
+		Escribir 'El Ganador es: ',listaJugadores[0]
 	FinSi
 FinAlgoritmo
